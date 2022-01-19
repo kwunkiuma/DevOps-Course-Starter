@@ -7,13 +7,11 @@ app.config.from_object(Config())
 
 @app.route('/add', methods=['POST'])
 def addToDo():
-    print(request.form.get('new-item'))
     add_item(request.form.get('new-item'))
     return redirect('/')
 
-@app.route('/complete/<id>', methods=['GET'])
+@app.route('/complete/<id>', methods=['POST'])
 def complete(id):
-    print(request.form.get('id'))
     complete_item(id)
     return redirect('/')
 

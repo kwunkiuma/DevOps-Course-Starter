@@ -20,9 +20,9 @@
       <ul class="list-group mb-4">
         {% for item in items %}
         <li>
-          <form method="GET" action='{{ url_for("complete", id=item.id) }}'>
+          <form method="POST" action='{{ url_for("complete", id=item.id) }}'>
             {{ item.name }}
-            <button type="submit" class="button" >Remove</button>
+            <button type="submit" class="button" >Complete</button>
           </form>
         </li>
         {% endfor %}
