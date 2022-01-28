@@ -55,10 +55,7 @@ def get_items():
         params=params
     )
 
-    for trello_list in response.json():
-        if trello_list['name'] == 'To Do':
-            return Item.from_trello_list(trello_list)
-    raise Exception("No list found with name 'To Do'")
+    return Item.from_trello_lists(response.json())
 
 def add_item(new_item):
     to_do_id = get_list_id('To Do')    
