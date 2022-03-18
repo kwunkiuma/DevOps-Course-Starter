@@ -78,11 +78,11 @@ def add_item(new_item):
         params=query
     )
     
-def complete_item(id):
+def move_item(id, new_list):
     url = (f'https://api.trello.com/1/cards/{id}')
 
-    done_id = get_list_id('Done')
-
+    done_id = get_list_id(new_list)
+ 
     headers = {
         "Accept": "application/json"
     }
