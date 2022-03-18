@@ -2,16 +2,13 @@ import requests
 import os
 from todo_app.data.item import Item
 
-key = os.getenv('TRELLO_API_KEY')
-token = os.getenv('TRELLO_API_TOKEN')
-board_id = os.getenv('TRELLO_BOARD_ID')
-
-auth_params = {
-    'key': key,
-    'token': token
-}
+def get_auth_params():
+    key = os.getenv('TRELLO_API_KEY')
+    token = os.getenv('TRELLO_API_TOKEN')
+    return {'key': key, 'token': token}
 
 def get_list_id(list_name):
+    board_id = os.getenv('TRELLO_BOARD_ID')
     url = (f'https://api.trello.com/1/boards/{board_id}/lists')
 
     headers = {
@@ -19,13 +16,12 @@ def get_list_id(list_name):
     }
 
     params = {
-        **auth_params,
+        **get_auth_params(),
         'cards': 'open',
         'fields': 'name'
     }
 
-    response = requests.request(
-        'GET',
+    response = requests.get(
         url,
         headers=headers,
         params=params
@@ -36,6 +32,7 @@ def get_list_id(list_name):
             return trello_list['id']
 
 def get_items():
+    board_id = os.getenv('TRELLO_BOARD_ID')
     url = (f'https://api.trello.com/1/boards/{board_id}/lists')
 
     headers = {
@@ -43,13 +40,12 @@ def get_items():
     }
 
     params = {
-        **auth_params,
+        **get_auth_params(),
         'cards': 'open',
         'fields': 'name'
     }
 
-    response = requests.request(
-        'GET',
+    response = requests.get(
         url,
         headers=headers,
         params=params
@@ -66,13 +62,12 @@ def add_item(new_item):
     }
 
     query = {
-        **auth_params,
+        **get_auth_params(),
         'name': new_item,
         'idList': to_do_id
     }
 
-    requests.request(
-        "POST",
+    requests.post(
         url,
         headers=headers,
         params=query
@@ -88,12 +83,11 @@ def move_item(id, new_list):
     }
 
     query = {
-        **auth_params,
+        **get_auth_params(),
         'idList': done_id,
     }
 
-    requests.request(
-        "PUT",
+    requests.put(
         url,
         headers=headers,
         params=query
