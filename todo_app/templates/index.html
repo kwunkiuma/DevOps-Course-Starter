@@ -9,8 +9,8 @@
 
   <h2>Add item</h2>
   <form method="POST" action="add">
-    <label for="title">Title:</label>
-    <input id="title" type="text" name="title" required/>
+    <label for="new-item">New entry: </label>
+    <input id="new-item" type="text" name="new-item" required />
     <button type="submit">Submit</button>
   </form>
 
@@ -19,7 +19,12 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items %}
-        <li>{{ item.title }}</li>
+        <li>
+          <form method="POST" action='{{ url_for("complete", id=item.id) }}'>
+            {{ item.name }}
+            <button type="submit" class="button" >Complete</button>
+          </form>
+        </li>
         {% endfor %}
       </ul>
     </div>
