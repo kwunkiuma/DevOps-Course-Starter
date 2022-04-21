@@ -17,8 +17,7 @@ def test_should_filter_to_do_items(default_items):
 
     # Act
     result = ViewModel(items).to_do_items
-    assert len(result) == 1
-    assert result[0] == default_items[0]
+    assert result == [ default_items[0] ]
 
 def test_should_filter_doing_items(default_items):
     # Arrange
@@ -26,8 +25,7 @@ def test_should_filter_doing_items(default_items):
 
     # Act
     result = ViewModel(items).doing_items
-    assert len(result) == 1
-    assert result[0] == default_items[1]
+    assert result == [ default_items[1] ]
 
 def test_should_filter_to_do_items(default_items):
     # Arrange
@@ -35,5 +33,4 @@ def test_should_filter_to_do_items(default_items):
 
     # Act
     result = ViewModel(items).done_items
-    assert len(result) == 1
-    assert result[0] == default_items[2]
+    assert result == [ default_items[2] ]

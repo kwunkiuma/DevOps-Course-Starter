@@ -31,3 +31,5 @@ def create_app():
     def index():
         item_view_model = ViewModel(get_items())
         return render_template('index.html', view_model=item_view_model)
+    
+    return app

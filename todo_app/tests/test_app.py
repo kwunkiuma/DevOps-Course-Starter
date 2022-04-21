@@ -23,10 +23,10 @@ def test_index_page(monkeypatch, client):
 
 def test_add(monkeypatch, client):
 # Replace call to requests.get(url) with our own function
-    monkeypatch.setattr(requests, 'post', get_lists_stub)
+    monkeypatch.setattr(requests, 'get', get_lists_stub)
     response = client.post('/add')
     
-    assert response.status_code == 200
+    assert response.status_code == 302
     
 class StubResponse():
     def __init__(self, fake_response_data):
