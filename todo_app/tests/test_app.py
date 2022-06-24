@@ -24,6 +24,7 @@ def test_index_page(monkeypatch, client):
 def test_add(monkeypatch, client):
 # Replace call to requests.get(url) with our own function
     monkeypatch.setattr(requests, 'get', get_lists_stub)
+    monkeypatch.setattr(requests, 'post', add_item_stub)
     response = client.post('/add')
     
     assert response.status_code == 302
@@ -45,3 +46,6 @@ def get_lists_stub(url, headers, params):
             'cards': [{'id': '456', 'name': 'To do card'}]
         }]
     return StubResponse(fake_response_data)
+
+def add_item_stub(url, headers, params):
+    return None
