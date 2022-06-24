@@ -4,7 +4,7 @@ class Item:
         self.name = name 
         self.status = status
 
-    @classmethod 
+    @classmethod
     def from_trello_card(cls, card, list): 
         return cls(card['id'], card['name'], list['name'])
 
@@ -12,4 +12,10 @@ class Item:
         items = []
         for card in trello_list['cards']:
             items.append(Item.from_trello_card(card, trello_list))
+        return items
+
+    def from_trello_lists(trello_lists):
+        items = []
+        for list in trello_lists:
+            items.extend(Item.from_trello_list(list))
         return items

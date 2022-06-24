@@ -16,12 +16,34 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
+      <h2>To do</h2>
       <ul class="list-group mb-4">
-        {% for item in items %}
+        {% for item in view_model.to_do_items %}
         <li>
-          <form method="POST" action='{{ url_for("complete", id=item.id) }}'>
-            {{ item.name }}
+          {{ item.name }}
+          <form method="POST" action='{{ url_for("doing", id=item.id) }}' style="display: inline">
+            <button type="submit" class="button" >Doing</button>
+          </form>
+          <form method="POST" action='{{ url_for("complete", id=item.id) }}' style="display: inline">
+            <button type="submit" class="button" >Complete</button>
+          </form>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Doing</h2>
+      <ul class="list-group mb-4">
+        {% for item in view_model.doing_items %}
+        <li>
+          {{ item.name }}
+          <form method="POST" action='{{ url_for("to_do", id=item.id) }}' style="display: inline">
+            <button type="submit" class="button" >To do</button>
+          </form>
+          <form method="POST" action='{{ url_for("complete", id=item.id) }}' style="display: inline">
             <button type="submit" class="button" >Complete</button>
           </form>
         </li>
