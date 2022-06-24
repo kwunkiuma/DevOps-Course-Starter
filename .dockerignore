@@ -1,0 +1,8 @@
+.github
+.pytest_cache
+.venv
+.vscode
+.env
+.env.test
+.gitignore
+env.template
