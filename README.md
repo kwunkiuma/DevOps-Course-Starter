@@ -69,8 +69,8 @@ docker run --env-file ./.env -p 5000:5000 --mount type=bind,source="$(pwd)"/todo
 
 For prod:
 ```bash
-docker build --target development --tag todo-app:dev .
-docker run --env-file ./.env -p 5000:5000 --mount type=bind,source="$(pwd)"/todo_app,target=/app/todo_app todo-app:prod
+docker build --target production --tag todo-app:prod .
+docker run --env-file ./.env -p 5000:5000 todo-app:prod
 ```
 The app can now be accessed at [`http://localhost:5000/`](http://localhost:5000/)
 
