@@ -1,0 +1,12 @@
+.git
+.github
+.pytest_cache
+.venv
+.vscode
+.env
+.env.test
+.gitignore
+.env.template
+todo_app/__pycache__
+DockerFile
+README.md
