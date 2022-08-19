@@ -4,7 +4,7 @@ ENV PATH "$PATH:/root/.local/bin/"
 EXPOSE 5000
 RUN mkdir /app
 WORKDIR /app
-COPY poetry.lock poetry.toml pyproject.toml .env.test ./
+COPY poetry.lock poetry.toml pyproject.toml ./
 COPY ./todo_app ./todo_app
 
 FROM base as production
@@ -16,5 +16,6 @@ RUN poetry install --no-dev
 ENTRYPOINT ["poetry", "run", "flask", "run", "-h", "0.0.0.0", "-p", "5000"]
 
 FROM base as test
+COPY .env.test ./
 RUN poetry install --no-dev
 ENTRYPOINT [ "poetry", "run", "pytest" ]
