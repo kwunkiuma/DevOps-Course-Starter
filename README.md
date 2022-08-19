@@ -74,6 +74,12 @@ docker run --env-file ./.env -p 5000:5000 todo-app:prod
 ```
 The app can now be accessed at [`http://localhost:5000/`](http://localhost:5000/)
 
+To run tests:
+```bash
+docker build --target test --tag todo-app:test .
+docker run todo-app:test
+```
+
 ## Testing
 
 The codebase contains unit tests and integration tests.
