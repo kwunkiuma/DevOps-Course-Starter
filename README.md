@@ -86,8 +86,8 @@ The codebase contains unit tests and integration tests.
 
 Run all tests with `poetry run pytest`, or run individual tests with `poetry run pytest path/to/test_file`.
 
-## Heroku
+## Azure
 
-This codebase is deployed to Heroku at [http://framasw-todo-app.herokuapp.com/](http://framasw-todo-app.herokuapp.com/).
+This codebase is deployed to Azure at [https://framasw-todo-app.azurewebsites.net/](https://framasw-todo-app.azurewebsites.net/).
 
 Any updates to the main branch will update the deployed app if the build succeeds.

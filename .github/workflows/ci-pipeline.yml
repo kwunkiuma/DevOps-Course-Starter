@@ -24,8 +24,6 @@ jobs:
     needs: build
     if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
-    env:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     steps:
       - uses: actions/checkout@v2
 
@@ -42,14 +40,5 @@ jobs:
           target: production
           tags: framasw/todo-app:latest,framasw/todo-app:${{ github.sha }}
 
-      - name: Login to Heroku
-        run: heroku container:login
-
-      - name: Tag Docker image for Heroku
-        run: docker tag framasw/todo-app:latest registry.heroku.com/framasw-todo-app/web
-
-      - name: Push to Heroku
-        run: docker push registry.heroku.com/framasw-todo-app/web
-
-      - name: Release on Heroku
-        run: heroku container:release -a framasw-todo-app web
+      - name: Call Azure webhook
+        run: curl -dH -X POST ${{ secrets.AZURE_WEBHOOK_URL }}
