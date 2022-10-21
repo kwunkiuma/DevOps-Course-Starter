@@ -24,6 +24,8 @@ jobs:
     needs: build
     if: (github.event_name == 'push' && github.ref == 'refs/heads/module-8') # TODO: Change branch to main
     runs-on: ubuntu-latest
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
     steps:
       - uses: actions/checkout@v2
 
@@ -41,8 +43,6 @@ jobs:
           tags: framasw/todo-app:latest,framasw/todo-app:${{ github.sha }}
 
       - name: Login to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
       - name: Tag Docker image for Heroku
@@ -52,6 +52,4 @@ jobs:
         run: docker push registry.heroku.com/framasw-todo-app/web
 
       - name: Release on Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:release -a framasw-todo-app web
