@@ -85,3 +85,9 @@ docker run todo-app:test
 The codebase contains unit tests and integration tests.
 
 Run all tests with `poetry run pytest`, or run individual tests with `poetry run pytest path/to/test_file`.
+
+## Heroku
+
+This codebase is deployed to Heroku at [http://framasw-todo-app.herokuapp.com/](http://framasw-todo-app.herokuapp.com/).
+
+Any updates to the main branch will update the deployed app if the build succeeds.

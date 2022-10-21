@@ -9,7 +9,7 @@ COPY ./todo_app ./todo_app
 
 FROM base as production
 RUN poetry install
-ENTRYPOINT ["poetry", "run", "gunicorn",  "-b", "0.0.0.0:5000", "todo_app.app:create_app()"]
+CMD poetry run gunicorn "todo_app.app:create_app()" -- bind 0.0.0.0:${PORT:-5000}
 
 FROM base as development
 RUN poetry install --no-dev
