@@ -6,6 +6,8 @@ on:
   pull_request:
     paths-ignore:
       - '**.md'
+env:
+  AZURE_WEBHOOK_URL: "${{ secrets.AZURE_WEBHOOK_URL }}"
 jobs:
   build:
     name: Build and test
@@ -41,4 +43,4 @@ jobs:
           tags: framasw/todo-app:latest,framasw/todo-app:${{ github.sha }}
 
       - name: Call Azure webhook
-        run: curl -dH -X POST ${{ secrets.AZURE_WEBHOOK_URL }}
+        run: curl -dH -X POST $AZURE_WEBHOOK_URL --fail

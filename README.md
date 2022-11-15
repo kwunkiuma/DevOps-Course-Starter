@@ -88,6 +88,6 @@ Run all tests with `poetry run pytest`, or run individual tests with `poetry run
 
 ## Azure
 
-This codebase is deployed to Azure at [https://framasw-todo-app.azurewebsites.net/](https://framasw-todo-app.azurewebsites.net/).
+This codebase is deployed to Azure at <https://framasw-todo-app.azurewebsites.net/>.
 
 Any updates to the main branch will update the deployed app if the build succeeds.
