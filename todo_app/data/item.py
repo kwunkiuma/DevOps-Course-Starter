@@ -5,17 +5,12 @@ class Item:
         self.status = status
 
     @classmethod
-    def from_trello_card(cls, card, list): 
-        return cls(card['id'], card['name'], list['name'])
-
-    def from_trello_list(trello_list):
-        items = []
-        for card in trello_list['cards']:
-            items.append(Item.from_trello_card(card, trello_list))
+    def from_db_item(cls, item):
+        return cls(item["_id"], item['name'], item['status'])
         return items
 
-    def from_trello_lists(trello_lists):
+    def from_db_items(db_items):
         items = []
-        for list in trello_lists:
-            items.extend(Item.from_trello_list(list))
+        for db_item in db_items:
+            items.append(Item.from_db_item(db_item))
         return items
