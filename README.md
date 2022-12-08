@@ -49,7 +49,7 @@ You should see output similar to the following:
  * Environment: development
  * Debug mode: on
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with fs23wevents reloader
+ * Restarting with fsevents reloader
  * Debugger is active!
  * Debugger PIN: 226-556-590
 ```
