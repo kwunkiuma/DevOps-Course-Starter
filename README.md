@@ -32,11 +32,9 @@ $ cp .env.template .env  # (first time only)
 
 The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change). There's also a [SECRET_KEY](https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY) variable which is used to encrypt the flask session cookie.
 
-## Trello
+## MongoDB
 
-A Trello account is needed to use this program. An account can be created for free on the [Trello website](https://trello.com/). After creating an account, obtain an API key and token; storing them as `TRELLO_API_KEY` and `TRELLO_API_TOKEN` in the `.env` file respectively.
-
-Create a board with three lists called 'To Do', 'Doing', and 'Done', and store the board ID as `TRELLO_BOARD_ID` in the `.env` file.
+An instance MongoDB is required to use this program. Store the primary connection string in `.env` as `COSMOSDB_PRIMARY_CONNECTION_STRING`.
 
 ## Running the App
 
@@ -55,7 +53,7 @@ You should see output similar to the following:
  * Debugger is active!
  * Debugger PIN: 226-556-590
 ```
-Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+Now visit <http://localhost:5000/> in your web browser to view the app.
 
 ## Docker
 

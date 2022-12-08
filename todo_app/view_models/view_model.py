@@ -16,7 +16,7 @@ class ViewModel:
     @property
     def doing_items(self):
         return self.items_filtered_by_status('Doing')
-        
+
     @property
     def done_items(self):
         return self.items_filtered_by_status('Done')
