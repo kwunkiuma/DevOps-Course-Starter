@@ -24,7 +24,7 @@ jobs:
   deploy:
     name: Publish
     needs: build
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/module-11')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
