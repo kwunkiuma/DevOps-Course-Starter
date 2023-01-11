@@ -7,12 +7,14 @@
     <p class="lead">Just another to-do app.</p>
   </div>
 
-  <h2>Add item</h2>
-  <form method="POST" action="add">
-    <label for="new-item">New entry: </label>
-    <input id="new-item" type="text" name="new-item" required />
-    <button type="submit">Submit</button>
-  </form>
+  {% if view_model.is_writer %}
+    <h2>Add item</h2>
+    <form method="POST" action="add">
+      <label for="new-item">New entry: </label>
+      <input id="new-item" type="text" name="new-item" required />
+      <button type="submit">Submit</button>
+    </form>
+  {% endif %}
 
   <div class="row">
     <div class="col-md-12">
@@ -21,12 +23,14 @@
         {% for item in view_model.to_do_items %}
         <li>
           {{ item.name }}
-          <form method="POST" action='{{ url_for("doing", id=item.id) }}' style="display: inline">
-            <button type="submit" class="button" >Doing</button>
-          </form>
-          <form method="POST" action='{{ url_for("complete", id=item.id) }}' style="display: inline">
-            <button type="submit" class="button" >Complete</button>
-          </form>
+          {% if view_model.is_writer %}
+            <form method="POST" action='{{ url_for("doing", id=item.id) }}' style="display: inline">
+              <button type="submit" class="button" >Doing</button>
+            </form>
+            <form method="POST" action='{{ url_for("complete", id=item.id) }}' style="display: inline">
+              <button type="submit" class="button" >Complete</button>
+            </form>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -40,12 +44,14 @@
         {% for item in view_model.doing_items %}
         <li>
           {{ item.name }}
-          <form method="POST" action='{{ url_for("to_do", id=item.id) }}' style="display: inline">
-            <button type="submit" class="button" >To do</button>
-          </form>
-          <form method="POST" action='{{ url_for("complete", id=item.id) }}' style="display: inline">
-            <button type="submit" class="button" >Complete</button>
-          </form>
+          {% if view_model.is_writer %}
+            <form method="POST" action='{{ url_for("to_do", id=item.id) }}' style="display: inline">
+              <button type="submit" class="button" >To do</button>
+            </form>
+            <form method="POST" action='{{ url_for("complete", id=item.id) }}' style="display: inline">
+              <button type="submit" class="button" >Complete</button>
+            </form>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>

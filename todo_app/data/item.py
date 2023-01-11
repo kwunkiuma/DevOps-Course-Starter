@@ -1,12 +1,12 @@
-class Item: 
-    def __init__(self, id, name, status = 'To Do'): 
-        self.id = id 
-        self.name = name 
+class Item:
+    def __init__(self, id, name, status="To Do"):
+        self.id = id
+        self.name = name
         self.status = status
 
     @classmethod
     def from_db_item(cls, item):
-        return cls(item["_id"], item['name'], item['status'])
+        return cls(item["_id"], item["name"], item["status"])
         return items
 
     def from_db_items(db_items):

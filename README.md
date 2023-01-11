@@ -36,6 +36,12 @@ The `.env` file is used by flask to set environment variables when running `flas
 
 An instance MongoDB is required to use this program. Store the primary connection string in `.env` as `COSMOSDB_PRIMARY_CONNECTION_STRING`.
 
+## GitHub OAuth
+
+The application uses GitHub OAuth for authentication. Follow the [instructions](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) on GitHub to set up an OAuth app.
+
+Add the client ID, client secret, and redirect URL to the `.env` file.
+
 ## Running the App
 
 Once the all dependencies have been installed, start the Flask app in development mode within the Poetry environment by running:
